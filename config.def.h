@@ -61,6 +61,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 
 #include "exitdwm.c"
+#include "shift-tools.c"
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -99,6 +100,19 @@ static const Key keys[] = {
 //	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {0} },
 	{ MODKEY|ShiftMask,             XK_q,      exitdwm,       {0} },
+//	{ MODKEY,                       XK_o,      shiftviewclients,    { .i = +1 } },
+	{ MODKEY|ShiftMask|ControlMask, XK_l,	   shiftview,         { .i = +1 } },
+	{ MODKEY|ShiftMask|ControlMask, XK_k,	   shiftview,         { .i = -1 } },
+//	{ MODKEY,	                XK_i,      shiftviewclients,    { .i = -1 } },
+//	{ MODKEY|ShiftMask,		XK_h,      shiftboth,      { .i = -1 }	},
+//	{ MODKEY|ControlMask,		XK_h,      shiftswaptags,  { .i = -1 }	},
+//	{ MODKEY|ControlMask,		XK_l,      shiftswaptags,  { .i = +1 }	},
+//	{ MODKEY|ShiftMask,             XK_l,      shiftboth,      { .i = +1 }	},
+
+
+
+
+
 };
 
 /* button definitions */
