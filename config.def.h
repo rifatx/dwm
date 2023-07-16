@@ -104,7 +104,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_s,      show,           {0} },
 	{ MODKEY|ShiftMask,             XK_s,      showall,        {0} },
 	{ MODKEY,                       XK_h,      hide,           {0} },
-	{ Mod1Mask,             		XK_Tab,    altTabStart,	   {0} },
+	{ Mod1Mask,           		XK_Tab,    altTabStart,	   {0} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -116,7 +116,8 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 //	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {0} },
-	{ MODKEY|ShiftMask,             XK_q,      exitdwm,       {0} },
+	{ MODKEY|ShiftMask,             XK_q,      exitdwm,        {0} },
+	{ MODKEY,			XK_l,      lockscreen,     {0} },
 //	{ MODKEY,                       XK_o,      shiftviewclients,    { .i = +1 } },
 	{ MODKEY|ShiftMask|ControlMask, XK_l,	   shiftview,         { .i = +1 } },
 	{ MODKEY|ShiftMask|ControlMask, XK_k,	   shiftview,         { .i = -1 } },

@@ -1,6 +1,11 @@
 # include <stdio.h>
 # include <string.h>
 
+void lockscreen()
+{
+	system ("slock & sleep .5; xset dpms force off");
+}
+
 void exitdwm ()
 {
 # if							   \
@@ -65,7 +70,7 @@ void exitdwm ()
 		goto close_streams;
 	}
 
-	if (strcmp (exit_action, S_LOCK) == 0) system ("slock & sleep .5; xset dpms force off");
+	if (strcmp (exit_action, S_LOCK) == 0) lockscreen(); 
 	else if (strcmp (exit_action, S_RESTART_DWM) == 0) quit (& (const Arg) {1});
 	else if (strcmp (exit_action, S_OFFSCREEN) == 0) system ("sleep .5; xset dpms force off");
 	else if (strcmp (exit_action, S_EXIT) == 0) quit (& (const Arg) {0});
