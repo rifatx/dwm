@@ -88,7 +88,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
-	{ MODKEY,                       XK_q,	   view,           {0} },
+	{ MODKEY,                       XK_q,	     view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
@@ -104,7 +104,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_s,      show,           {0} },
 	{ MODKEY|ShiftMask,             XK_s,      showall,        {0} },
 	{ MODKEY,                       XK_h,      hide,           {0} },
-	{ Mod1Mask,           		XK_Tab,    altTabStart,	   {0} },
+	{ Mod1Mask,           		      XK_Tab,    altTabStart,	   {0} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -117,10 +117,10 @@ static const Key keys[] = {
 //	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {0} },
 	{ MODKEY|ShiftMask,             XK_q,      exitdwm,        {0} },
-	{ MODKEY,			XK_l,      lockscreen,     {0} },
+	{ MODKEY|ShiftMask,             XK_l,      lockscreen,     {0} },
 //	{ MODKEY,                       XK_o,      shiftviewclients,    { .i = +1 } },
-	{ MODKEY|ShiftMask|ControlMask, XK_l,	   shiftview,         { .i = +1 } },
-	{ MODKEY|ShiftMask|ControlMask, XK_k,	   shiftview,         { .i = -1 } },
+	{ MODKEY|ShiftMask|ControlMask, XK_l,	     shiftview,         { .i = +1 } },
+	{ MODKEY|ShiftMask|ControlMask, XK_k,	     shiftview,         { .i = -1 } },
 //	{ MODKEY,	                XK_i,      shiftviewclients,    { .i = -1 } },
 //	{ MODKEY|ShiftMask,		XK_h,      shiftboth,      { .i = -1 }	},
 //	{ MODKEY|ControlMask,		XK_h,      shiftswaptags,  { .i = -1 }	},
