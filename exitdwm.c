@@ -3,7 +3,7 @@
 
 void lockscreen()
 {
-	system ("slock & sleep .5; xset dpms force off");
+	system ("slock -t 0 & sleep .5; xset dpms force off");
 }
 
 void exitdwm ()
