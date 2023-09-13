@@ -459,7 +459,7 @@ attachstack(Client *c)
 void
 buttonpress(XEvent *e)
 {
-  int i, x;
+  unsigned int i, x;
   unsigned int click;
   Arg arg = {0};
 	Client *c;
@@ -472,8 +472,10 @@ buttonpress(XEvent *e)
 		selmon = m;
 		focus(NULL);
 	}
+
+  click = ClkRootWin;
+
 	if (ev->window == selmon->barwin) {
-	/*
     i = x = 0;
 		do
 			x += TEXTW(tags[i]);
@@ -484,7 +486,7 @@ buttonpress(XEvent *e)
 		} else if (ev->x < x + TEXTW(selmon->ltsymbol))
 			click = ClkLtSymbol;
 		// 2px right padding
-		else if (ev->x > selmon->ww - TEXTW(stext) + lrpad - 2)
+		else if (ev->x > selmon->ww - TEXTW(stextc) + lrpad - 2)
 			click = ClkStatusText;
 		else {
 			x += TEXTW(selmon->ltsymbol);
@@ -502,23 +504,38 @@ buttonpress(XEvent *e)
 				arg.v = c;
 			}
 		}
+	/*
+    if (ev->x < ble - blw) {
+      i = -1, x = -ev->x;
+      do
+        x += TEXTW(tags[++i]);
+      while (x <= 0);
+      click = ClkTagBar;
+      arg.ui = 1 << i;
+    } else if (ev->x < ble)
+      click = ClkLtSymbol;
+    else if (ev->x < selmon->ww - wstext)
+      click = ClkWinTitle;
+    else if ((x = selmon->ww - RSPAD - ev->x) > 0 && (x -= wstext - LSPAD - RSPAD) <= 0) {
+      updatedwmblockssig(x);
+      click = ClkStatusText;
+    } else {
+      x += TEXTW(selmon->ltsymbol);
+			c = m->clients;
+
+			if (c) {
+				do {
+					if (!ISVISIBLE(c))
+						continue;
+					else
+						x +=(1.0 / (double)m->bt) * m->btw;
+				} while (ev->x > x && (c = c->next));
+
+				click = ClkWinTitle;
+				arg.v = c;
+	    }
+	  }
   */
-                if (ev->x < ble - blw) {
-                        i = -1, x = -ev->x;
-                        do
-                                x += TEXTW(tags[++i]);
-                        while (x <= 0);
-                        click = ClkTagBar;
-                        arg.ui = 1 << i;
-                } else if (ev->x < ble)
-                        click = ClkLtSymbol;
-                else if (ev->x < selmon->ww - wstext)
-                        click = ClkWinTitle;
-                else if ((x = selmon->ww - RSPAD - ev->x) > 0 && (x -= wstext - LSPAD - RSPAD) <= 0) {
-                        updatedwmblockssig(x);
-                        click = ClkStatusText;
-                } else
-                        return;
  
 	} else if ((c = wintoclient(ev->window))) {
 		focus(c);
