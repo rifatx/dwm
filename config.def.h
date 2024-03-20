@@ -158,11 +158,6 @@ static const Key keys[] = {
 //	{ MODKEY|ControlMask,		XK_h,      shiftswaptags,  { .i = -1 }	},
 //	{ MODKEY|ControlMask,		XK_l,      shiftswaptags,  { .i = +1 }	},
 //	{ MODKEY|ShiftMask,             XK_l,      shiftboth,      { .i = +1 }	},
-
-
-
-
-
 };
 
 /* button definitions */
