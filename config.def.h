@@ -1,5 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
+#define SESSION_FILE "/tmp/dwm-session"
+
 /* alt-tab configuration */
 static const unsigned int tabModKey 		= 0x40;	/* if this key is hold the alt-tab functionality stays acitve. This key must be the same as key that is used to active functin altTabStart `*/
 static const unsigned int tabCycleKey 		= 0x17;	/* if this key is hit the alt-tab program moves one position forward in clients stack. This key must be the same as key that is used to active functin altTabStart */
