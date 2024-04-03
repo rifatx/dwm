@@ -92,7 +92,8 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-i", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_green, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "tabbed", "-c", "-r", "2", "st", "-w", "''" };
+static const char *termcmd[]  = { "tabbed", "-c", "-r", "2", "st", "-w", "''", NULL };
+static const char *surfcmd[]  = { "tabbed", "-c", "surf", "-e", NULL };
 
 #include "exitdwm.c"
 #include "shift-tools.c"
@@ -102,6 +103,7 @@ static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_BackSpace, spawn,       {.v = surfcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
   { MODKEY,                       XK_j,      focusstackvis,  {.i = +1 } },
   { MODKEY|ShiftMask,             XK_Right,  focusstackvis,  {.i = +1 } },
