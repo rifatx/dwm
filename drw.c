@@ -236,6 +236,24 @@ drw_rect(Drw *drw, int x, int y, unsigned int w, unsigned int h, int filled, int
 }
 
 int
+drw_text_font_8(Drw *drw, int x, int y, unsigned int lpad, const char *text, int invert, int fontindex)
+{
+  XftDraw *d = XftDrawCreate(drw->dpy, drw->drawable,
+		                  DefaultVisual(drw->dpy, drw->screen),
+		                  DefaultColormap(drw->dpy, drw->screen));
+  Fnt *font = drw->fonts;
+
+  while (fontindex-- > 0 && font->next) {
+    font = font->next;
+  }
+
+  if (font && text){
+    XftDrawString8(d, &drw->scheme[invert ? ColBg : ColFg], font->xfont, x, y + font->xfont->ascent, (XftChar8 *)text, strlen(text));
+  }
+  return x || y;
+}
+
+int
 drw_text(Drw *drw, int x, int y, unsigned int w, unsigned int h, unsigned int lpad, const char *text, int invert)
 {
 	int i, ty, ellipsis_x = 0;

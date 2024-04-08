@@ -797,10 +797,11 @@ dirtomon(int dir)
 void
 drawbar(Monitor *m)
 {
-  	int x, w, n = 0, scm;
+ 	int x, w, n = 0, scm;
 	int boxs = drw->fonts->h / 9;
 	int boxw = drw->fonts->h / 6 + 2;
-	unsigned int i, occ = 0, urg = 0;
+	unsigned int i, urg = 0;
+  unsigned int occ[LENGTH(tags)] = {0};
 	Client *c;
 
 	if (!m->showbar)
@@ -839,21 +840,33 @@ drawbar(Monitor *m)
 	for (c = m->clients; c; c = c->next) {
 		if (ISVISIBLE(c))
 			n++;
-		 occ |= c->tags;
+    //occ |= c->tags;
+    for (i = 0; i < LENGTH(tags); ++i){
+     occ[i] += c->tags & (1 << i) ? 1 : 0;
+    }
 		if (c->isurgent)
 			urg |= c->tags;
 	}
 	x = 0;
-	for (i = 0; i < LENGTH(tags); i++) {
-		w = TEXTW(tags[i]);
-		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
-		drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
-		if (occ & 1 << i)
-			drw_rect(drw, x + boxs, boxs, boxw, boxw,
-				m == selmon && selmon->sel && selmon->sel->tags & 1 << i,
-				urg & 1 << i);
-		x += w;
-	}
+
+  for (i = 0; i < LENGTH(tags); i++) {
+    w = TEXTW(tags[i]);
+    drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
+    drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
+    /*
+       if (occ & 1 << i)
+       drw_rect(drw, x + boxs, boxs, boxw, boxw,
+       m == selmon && selmon->sel && selmon->sel->tags & 1 << i,
+       urg & 1 << i);
+       */
+    if (occ[i]) {
+      char nc[3];
+      sprintf(nc, "%d", occ[i] > 99 ? 99 : occ[i]);
+      drw_text_font_8(drw, x, 0, 0, nc, urg & 1 << i, 1);
+    }
+
+    x += w;
+  }
 	w = TEXTW(m->ltsymbol);
 	drw_setscheme(drw, scheme[SchemeNorm]);
 	x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
