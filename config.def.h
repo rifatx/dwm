@@ -36,20 +36,22 @@ static const char col5[]            = "#ffffff";
 static const char col6[]            = "#ffffff";
 
 enum { SchemeNorm, SchemeCol1, SchemeCol2, SchemeCol3, SchemeCol4,
-       SchemeCol5, SchemeCol6, SchemeSel, SchemeHov, SchemeHid }; /* color schemes */
+       SchemeCol5, SchemeCol6, SchemeSel, SchemeHov, SchemeHid,
+       SchemeClN }; /* color schemes */
 
 static const char *colors[][3]      = {
 	/*               fg          bg          border   */
-	[SchemeNorm] = { col_gray3,  col_gray1,  col_gray2 },
-	[SchemeCol1] = { col_black,  col_yellow, col_gray2 },
-	[SchemeCol2] = { col_white,  col_red,    col_gray2 },
-	[SchemeCol3] = { col3,       col_gray1,  col_gray2 },
-	[SchemeCol4] = { col4,       col_gray1,  col_gray2 },
-	[SchemeCol5] = { col5,       col_gray1,  col_gray2 },
-  [SchemeCol6] = { col6,       col_gray1,  col_gray2 },
-  [SchemeSel]  = { col_gray4,  col_green,  col_green  },
-	[SchemeHov]  = { col_gray4,  col_green,  col_green  },
+	[SchemeNorm] = { col_gray3,     col_gray1,  col_gray2 },
+	[SchemeCol1] = { col_black,     col_yellow, col_gray2 },
+	[SchemeCol2] = { col_white,     col_red,    col_gray2 },
+	[SchemeCol3] = { col3,          col_gray1,  col_gray2 },
+	[SchemeCol4] = { col4,          col_gray1,  col_gray2 },
+	[SchemeCol5] = { col5,          col_gray1,  col_gray2 },
+  [SchemeCol6] = { col6,          col_gray1,  col_gray2 },
+  [SchemeSel]  = { col_gray4,     col_green,  col_green  },
+	[SchemeHov]  = { col_gray4,     col_green,  col_green  },
 	[SchemeHid]  = { col_br_green,  col_gray1,  col_green  },
+	[SchemeClN]  = { col_br_green,  col_gray1,  col_gray2  },
 };
 
 /* tagging */

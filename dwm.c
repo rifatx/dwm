@@ -201,7 +201,7 @@ static void grabbuttons(Client *c, int focused);
 static void grabkeys(void);
 static void hide(const Arg *arg);
 static void hidewin(Client *c);
-static void incnmaster(const Arg *arg);
+//static void incnmaster(const Arg *arg);
 static void keypress(XEvent *e);
 static void killclient(const Arg *arg);
 static void manage(Window w, XWindowAttributes *wa);
@@ -798,8 +798,8 @@ void
 drawbar(Monitor *m)
 {
  	int x, w, n = 0, scm;
-	int boxs = drw->fonts->h / 9;
-	int boxw = drw->fonts->h / 6 + 2;
+	// int boxs = drw->fonts->h / 9;
+	// int boxw = drw->fonts->h / 6 + 2;
 	unsigned int i, urg = 0;
   unsigned int occ[LENGTH(tags)] = {0};
 	Client *c;
@@ -862,6 +862,7 @@ drawbar(Monitor *m)
     if (occ[i]) {
       char nc[3];
       sprintf(nc, "%d", occ[i] > 99 ? 99 : occ[i]);
+      drw_setscheme(drw, scheme[SchemeClN]);
       drw_text_font_8(drw, x, 0, 0, nc, urg & 1 << i, 1);
     }
 
@@ -1207,12 +1208,14 @@ hidewin(Client *c) {
 }
 
 
+/*
 void
 incnmaster(const Arg *arg)
 {
 	selmon->nmaster = MAX(selmon->nmaster + arg->i, 0);
 	arrange(selmon);
 }
+*/
 
 #ifdef XINERAMA
 static int
