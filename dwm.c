@@ -310,6 +310,7 @@ static Display *dpy;
 static Drw *drw;
 static Monitor *mons, *selmon;
 static Window root, wmcheckwin;
+static char nc[3];
 
 /* configuration, allows nested code to access above variables */
 #include "config.h"
@@ -860,7 +861,6 @@ drawbar(Monitor *m)
        urg & 1 << i);
        */
     if (occ[i]) {
-      char nc[3];
       sprintf(nc, "%d", occ[i] > 99 ? 99 : occ[i]);
       drw_setscheme(drw, scheme[SchemeClN]);
       drw_text_font_8(drw, x, 0, 0, nc, urg & 1 << i, 1);
