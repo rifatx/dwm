@@ -179,9 +179,20 @@ static const Button buttons[] = {
   { ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
-	{ ClkTagBar,            0,              Button1,        view,           {0} },
+  { ClkTagBar,            0,              Button1,        view,           {0} },
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+// scrollwheel view switchers
+  { ClkWinTitle,          MODKEY,         Button4,        shiftview,      {.i = -1} },
+  { ClkWinTitle,          MODKEY,         Button5,        shiftview,      {.i = 1} },
+  { ClkStatusText,        MODKEY,         Button4,        shiftview,      {.i = -1} },
+  { ClkStatusText,        MODKEY,         Button5,        shiftview,      {.i = 1} },
+  { ClkClientWin,         MODKEY,         Button4,        shiftview,      {.i = -1} },
+  { ClkClientWin,         MODKEY,         Button5,        shiftview,      {.i = 1} },
+  { ClkTagBar,            MODKEY,         Button4,        shiftview,      {.i = -1} },
+  { ClkTagBar,            MODKEY,         Button5,        shiftview,      {.i = 1} },
+  { ClkRootWin,           MODKEY,         Button4,        shiftview,      {.i = -1} },
+  { ClkRootWin,           MODKEY,         Button5,        shiftview,      {.i = 1} },
 };
 
